@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environment (created by the README's setup step)
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
