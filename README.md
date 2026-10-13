@@ -92,10 +92,36 @@ Wait for it to come back, and open the terminal again.
 
 ## Step 5 — Check the Pi can see your sensor
 
+### 5a. Do you already have the tool?
+
 Type this:
 
 ```bash
-sudo apt install -y i2c-tools && i2cdetect -y 1
+i2cdetect -V
+```
+
+- If you see a **version number** (like `i2cdetect version 4.3`), you already have it.
+  **Skip to 5b.**
+- If you see **`command not found`**, install it first:
+
+  ```bash
+  sudo apt install -y i2c-tools
+  ```
+
+### 5b. Is I2C actually switched on?
+
+```bash
+ls /dev/i2c-*
+```
+
+- If you see **`/dev/i2c-1`**, it is on. Carry on to 5c.
+- If you see **`No such file or directory`**, Step 4 did not take. Go back and do
+  Step 4 again, and make sure you reboot at the end.
+
+### 5c. Look for the sensor
+
+```bash
+i2cdetect -y 1
 ```
 
 You should see a grid of dots with **one number** in it, like this:
